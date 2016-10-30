@@ -1,10 +1,12 @@
 #!/usr/bin/env node
+console.time('execution time')
 var fs = require('fs')
-var backup = require('./lib/backup.js')
+var path = require('path')
+var backup = require(path.join(__dirname, 'lib/backup.js'))
 
 if (process.argv[2] === undefined) {
-  if (fs.statSync('./config.json').isFile()) {
-    var config = require('./config.json')
+  if (fs.statSync(path.join(__dirname, 'config.json')).isFile()) {
+    var config = require(path.join(__dirname, 'config.json'))
   }
 }
 
